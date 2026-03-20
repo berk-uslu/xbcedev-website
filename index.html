@@ -7,282 +7,390 @@
     <meta name="description" content="XBCE Dev - Mobil uygulama gelistirme. Dualar ve Sureler, Kuran-i Kerim okuma uygulamasi ve daha fazlasi.">
     <link rel="canonical" href="https://xbcedev.com/">
     <link rel="icon" type="image/png" href="assets/app-icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
-            --green: #1B7A2B;
-            --green-light: #2E9B3E;
-            --green-dark: #135E1F;
-            --gold: #D4A843;
-            --gold-light: #E8C96A;
-            --bg: #FAFAF5;
-            --card: #F7F0E5;
-            --text: #1A2B4A;
-            --text-secondary: #4A5568;
+            --bg: #0a0a0b;
+            --surface: #141416;
+            --surface-2: #1c1c1f;
+            --border: rgba(255,255,255,0.08);
+            --border-hover: rgba(255,255,255,0.15);
+            --text: #f0f0f0;
+            --text-secondary: #8a8a8e;
+            --accent: #6366f1;
+            --accent-light: #818cf8;
+            --accent-glow: rgba(99,102,241,0.15);
+            --gradient-1: #6366f1;
+            --gradient-2: #a855f7;
+            --gradient-3: #ec4899;
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             background: var(--bg);
             color: var(--text);
             line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
         }
 
         /* === NAV === */
         .nav {
-            background: var(--green-dark);
-            padding: 14px 0;
-            position: sticky;
+            position: fixed;
             top: 0;
+            left: 0;
+            right: 0;
             z-index: 100;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+            padding: 16px 0;
+            background: rgba(10,10,11,0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
         }
         .nav-inner {
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 0 24px;
+            padding: 0 32px;
             display: flex;
             align-items: center;
             justify-content: space-between;
         }
         .nav-brand {
-            display: flex;
-            align-items: center;
-            gap: 10px;
             text-decoration: none;
-            color: #fff;
+            color: var(--text);
+            font-size: 20px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
         }
-        .nav-brand img { width: 36px; height: 36px; border-radius: 8px; }
-        .nav-brand span { font-size: 18px; font-weight: 700; }
-        .nav-links { display: flex; gap: 24px; align-items: center; }
+        .nav-brand span.dot { color: var(--accent); }
+        .nav-links { display: flex; gap: 32px; align-items: center; }
         .nav-links a {
-            color: rgba(255,255,255,0.85);
+            color: var(--text-secondary);
             text-decoration: none;
             font-size: 14px;
             font-weight: 500;
             transition: color 0.2s;
         }
-        .nav-links a:hover { color: #fff; }
+        .nav-links a:hover { color: var(--text); }
         .lang-switch {
-            background: rgba(255,255,255,0.15);
-            border: 1px solid rgba(255,255,255,0.3);
-            color: #fff;
-            padding: 6px 12px;
-            border-radius: 6px;
+            background: var(--surface-2);
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            padding: 6px 14px;
+            border-radius: 8px;
             font-size: 13px;
+            font-weight: 600;
             cursor: pointer;
-            transition: background 0.2s;
+            transition: all 0.2s;
+            font-family: inherit;
         }
-        .lang-switch:hover { background: rgba(255,255,255,0.25); }
+        .lang-switch:hover {
+            background: var(--surface);
+            border-color: var(--border-hover);
+            color: var(--text);
+        }
 
         /* === HERO === */
         .hero {
-            background: linear-gradient(135deg, var(--green-dark) 0%, var(--green) 50%, var(--green-light) 100%);
-            padding: 80px 24px 60px;
+            padding: 160px 32px 100px;
             text-align: center;
-            color: #fff;
             position: relative;
             overflow: hidden;
         }
         .hero::before {
             content: '';
             position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-            opacity: 0.5;
+            top: -200px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+            pointer-events: none;
         }
-        .hero-content { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; }
-        .hero-icon {
-            width: 100px;
-            height: 100px;
-            border-radius: 24px;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
-            margin-bottom: 24px;
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 680px;
+            margin: 0 auto;
+        }
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--surface-2);
+            border: 1px solid var(--border);
+            padding: 8px 16px;
+            border-radius: 100px;
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+        }
+        .hero-badge .pulse {
+            width: 8px;
+            height: 8px;
+            background: #22c55e;
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
         }
         .hero h1 {
-            font-size: 42px;
-            font-weight: 800;
-            margin-bottom: 12px;
-            letter-spacing: -0.5px;
+            font-size: 64px;
+            font-weight: 900;
+            line-height: 1.05;
+            letter-spacing: -2px;
+            margin-bottom: 20px;
+        }
+        .hero h1 .gradient {
+            background: linear-gradient(135deg, var(--gradient-1), var(--gradient-2), var(--gradient-3));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         .hero p {
             font-size: 18px;
-            opacity: 0.9;
-            margin-bottom: 32px;
-            max-width: 500px;
-            margin-left: auto;
-            margin-right: auto;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+            line-height: 1.7;
         }
-        .store-btn {
+        .hero-cta {
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            background: var(--gold);
+            background: var(--accent);
             color: #fff;
-            padding: 14px 32px;
+            padding: 14px 28px;
             border-radius: 12px;
             text-decoration: none;
-            font-size: 16px;
-            font-weight: 700;
-            box-shadow: 0 4px 16px rgba(212, 168, 67, 0.4);
-            transition: transform 0.2s, box-shadow 0.2s;
+            font-size: 15px;
+            font-weight: 600;
+            transition: all 0.2s;
+            box-shadow: 0 0 24px var(--accent-glow);
         }
-        .store-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 24px rgba(212, 168, 67, 0.5);
+        .hero-cta:hover {
+            background: var(--accent-light);
+            transform: translateY(-1px);
+            box-shadow: 0 0 32px rgba(99,102,241,0.25);
         }
-        .store-btn svg { width: 24px; height: 24px; fill: #fff; }
+        .hero-cta svg { width: 18px; height: 18px; }
 
-        /* === APPS SECTION === */
+        /* === SECTION === */
         .section {
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 64px 24px;
+            padding: 80px 32px;
+        }
+        .section-header {
+            text-align: center;
+            margin-bottom: 56px;
+        }
+        .section-label {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 12px;
         }
         .section-title {
-            text-align: center;
-            font-size: 28px;
-            font-weight: 700;
-            margin-bottom: 8px;
-            color: var(--green-dark);
+            font-size: 36px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 12px;
         }
         .section-subtitle {
-            text-align: center;
             font-size: 16px;
             color: var(--text-secondary);
-            margin-bottom: 48px;
         }
 
         /* === APP CARD === */
         .app-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
             gap: 24px;
         }
         .app-card {
-            background: #fff;
-            border-radius: 16px;
+            background: var(--surface);
+            border-radius: 20px;
             overflow: hidden;
-            border: 1px solid rgba(208, 196, 178, 0.4);
-            transition: transform 0.2s, box-shadow 0.2s;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
         }
         .app-card:hover {
+            border-color: var(--border-hover);
             transform: translateY(-4px);
-            box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
         }
         .app-card-header {
-            background: linear-gradient(135deg, var(--green-dark), var(--green));
-            padding: 24px;
+            padding: 28px 28px 0;
             display: flex;
             align-items: center;
             gap: 16px;
         }
         .app-card-header img {
-            width: 64px;
-            height: 64px;
-            border-radius: 16px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            width: 56px;
+            height: 56px;
+            border-radius: 14px;
         }
         .app-card-header-text h3 {
-            color: #fff;
-            font-size: 20px;
+            font-size: 18px;
             font-weight: 700;
+            color: var(--text);
         }
         .app-card-header-text p {
-            color: rgba(255,255,255,0.8);
             font-size: 13px;
+            color: var(--text-secondary);
+            margin-top: 2px;
         }
-        .app-card-body { padding: 24px; }
-        .app-card-body p {
+        .app-card-body { padding: 24px 28px 28px; }
+        .app-card-body > p {
             color: var(--text-secondary);
             font-size: 14px;
-            margin-bottom: 16px;
+            line-height: 1.6;
+            margin-bottom: 20px;
         }
 
         /* === SCREENSHOTS === */
         .screenshots {
             display: flex;
-            gap: 12px;
+            gap: 10px;
             overflow-x: auto;
-            padding-bottom: 8px;
+            padding-bottom: 12px;
             margin-bottom: 20px;
             scroll-snap-type: x mandatory;
+            scrollbar-width: none;
         }
-        .screenshots::-webkit-scrollbar { height: 4px; }
-        .screenshots::-webkit-scrollbar-track { background: transparent; }
-        .screenshots::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 4px; }
+        .screenshots::-webkit-scrollbar { display: none; }
         .screenshot-img {
-            height: 230px;
+            height: 240px;
             width: auto;
-            border-radius: 12px;
-            border: 1px solid rgba(208, 196, 178, 0.4);
+            border-radius: 14px;
             scroll-snap-align: start;
             flex-shrink: 0;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border: 1px solid var(--border);
+            transition: transform 0.2s;
         }
+        .screenshot-img:hover { transform: scale(1.02); }
 
         /* === FEATURES === */
         .features {
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 20px;
+            gap: 6px;
+            margin-bottom: 24px;
         }
         .feature-tag {
-            background: rgba(27, 122, 43, 0.08);
-            color: var(--green);
-            padding: 4px 10px;
-            border-radius: 6px;
+            background: var(--accent-glow);
+            color: var(--accent-light);
+            padding: 5px 12px;
+            border-radius: 8px;
             font-size: 12px;
             font-weight: 500;
+            border: 1px solid rgba(99,102,241,0.15);
         }
 
         .app-card-link {
             display: inline-flex;
             align-items: center;
-            gap: 6px;
-            background: var(--green);
-            color: #fff;
-            padding: 10px 20px;
-            border-radius: 8px;
+            gap: 8px;
+            background: var(--surface-2);
+            color: var(--text);
+            padding: 11px 20px;
+            border-radius: 10px;
             text-decoration: none;
             font-size: 14px;
             font-weight: 600;
-            transition: background 0.2s;
+            border: 1px solid var(--border);
+            transition: all 0.2s;
         }
-        .app-card-link:hover { background: var(--green-dark); }
+        .app-card-link:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+        }
+        .app-card-link svg { opacity: 0.7; }
+
+        /* === COMING SOON === */
+        .coming-soon {
+            background: var(--surface);
+            border: 1px dashed rgba(255,255,255,0.1);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 200px;
+            text-align: center;
+            padding: 40px;
+        }
+        .coming-soon-inner p {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-top: 8px;
+        }
+        .coming-soon-inner h3 {
+            color: var(--text-secondary);
+            font-size: 18px;
+            font-weight: 600;
+        }
+        .coming-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--surface-2);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+        }
 
         /* === FOOTER === */
         .footer {
-            background: var(--green-dark);
-            color: rgba(255,255,255,0.7);
-            padding: 32px 24px;
+            border-top: 1px solid var(--border);
+            padding: 40px 32px;
             text-align: center;
-            font-size: 14px;
+        }
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
         .footer-links {
             display: flex;
-            justify-content: center;
             gap: 24px;
-            margin-bottom: 16px;
         }
         .footer-links a {
-            color: rgba(255,255,255,0.7);
+            color: var(--text-secondary);
             text-decoration: none;
-            font-size: 14px;
+            font-size: 13px;
+            font-weight: 500;
+            transition: color 0.2s;
         }
-        .footer-links a:hover { color: #fff; }
+        .footer-links a:hover { color: var(--text); }
+        .footer-copy {
+            color: var(--text-secondary);
+            font-size: 13px;
+        }
 
         /* === RESPONSIVE === */
-        @media (max-width: 640px) {
-            .hero { padding: 56px 20px 48px; }
-            .hero h1 { font-size: 28px; }
-            .hero p { font-size: 15px; }
-            .section { padding: 48px 16px; }
-            .section-title { font-size: 22px; }
+        @media (max-width: 768px) {
+            .hero { padding: 120px 20px 64px; }
+            .hero h1 { font-size: 36px; letter-spacing: -1px; }
+            .hero p { font-size: 16px; }
+            .section { padding: 56px 20px; }
+            .section-title { font-size: 28px; }
             .app-grid { grid-template-columns: 1fr; }
             .nav-links a.hide-mobile { display: none; }
+            .nav-inner { padding: 0 20px; }
+            .footer-inner { flex-direction: column; gap: 16px; }
+            .app-card-header { padding: 24px 24px 0; }
+            .app-card-body { padding: 20px 24px 24px; }
         }
     </style>
 </head>
@@ -291,13 +399,11 @@
 <!-- NAV -->
 <nav class="nav">
     <div class="nav-inner">
-        <a href="index.html" class="nav-brand">
-            <span>XBCE Dev</span>
-        </a>
+        <a href="index.html" class="nav-brand">xbce<span class="dot">.</span>dev</a>
         <div class="nav-links">
-            <a href="#apps" class="hide-mobile">Uygulamalar</a>
-            <a href="privacy.html" class="hide-mobile">Gizlilik</a>
-            <a href="#iletisim" class="hide-mobile">Iletisim</a>
+            <a href="#apps" class="hide-mobile" id="nav-apps">Uygulamalar</a>
+            <a href="privacy.html" class="hide-mobile" id="nav-privacy">Gizlilik</a>
+            <a href="#contact" class="hide-mobile" id="nav-contact">Iletisim</a>
             <button class="lang-switch" onclick="toggleLang()">EN</button>
         </div>
     </div>
@@ -306,18 +412,26 @@
 <!-- HERO -->
 <section class="hero">
     <div class="hero-content">
-        <h1 id="hero-title">XBCE Dev</h1>
-        <p id="hero-desc">Hayati kolaylastiran mobil uygulamalar gelistiriyoruz.</p>
-        <a href="https://play.google.com/store/apps/details?id=com.dualarvesureler.app" class="store-btn">
-            <span id="hero-btn">Uygulamalarimizi Kesfedin</span>
+        <div class="hero-badge">
+            <span class="pulse"></span>
+            <span id="hero-badge-text">Yeni uygulama yayinda</span>
+        </div>
+        <h1><span id="hero-title-1">Mobil deneyimi</span><br><span class="gradient" id="hero-title-2">yeniden tasarliyoruz.</span></h1>
+        <p id="hero-desc">Kullanici odakli, performansli ve estetik mobil uygulamalar gelistiriyoruz.</p>
+        <a href="#apps" class="hero-cta">
+            <span id="hero-btn">Uygulamalari Kesfet</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
         </a>
     </div>
 </section>
 
 <!-- APPS -->
 <section class="section" id="apps">
-    <h2 class="section-title" id="apps-title">Uygulamalarimiz</h2>
-    <p class="section-subtitle" id="apps-subtitle">Dijital dunyada manevi yolculugunuza eslik ediyoruz</p>
+    <div class="section-header">
+        <p class="section-label" id="apps-label">Uygulamalar</p>
+        <h2 class="section-title" id="apps-title">Projelerimiz</h2>
+        <p class="section-subtitle" id="apps-subtitle">Gelistirdigimiz ve yayinladigimiz mobil uygulamalar</p>
+    </div>
 
     <div class="app-grid">
 
@@ -327,7 +441,7 @@
                 <img src="assets/app-icon.png" alt="Dualar ve Sureler">
                 <div class="app-card-header-text">
                     <h3>Dualar ve Sureler</h3>
-                    <p>Kuran-i Kerim & Islami Yasam</p>
+                    <p id="app1-subtitle">Kuran-i Kerim & Islami Yasam</p>
                 </div>
             </div>
             <div class="app-card-body">
@@ -362,18 +476,13 @@
         </div>
 
         <!-- PLACEHOLDER: Coming Soon -->
-        <div class="app-card" style="opacity: 0.6;">
-            <div class="app-card-header" style="background: linear-gradient(135deg, #4A5568, #718096);">
-                <div style="width:64px;height:64px;border-radius:16px;background:rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;">
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="rgba(255,255,255,0.5)"><path d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z"/></svg>
+        <div class="coming-soon">
+            <div class="coming-soon-inner">
+                <div class="coming-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#8a8a8e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
                 </div>
-                <div class="app-card-header-text">
-                    <h3 id="coming-title">Yakinda</h3>
-                    <p id="coming-desc">Yeni uygulama geliyor...</p>
-                </div>
-            </div>
-            <div class="app-card-body">
-                <p id="coming-text">Yeni projelerimiz uzerinde calisiyoruz. Takipte kalin!</p>
+                <h3 id="coming-title">Yakinda</h3>
+                <p id="coming-desc">Yeni projeler uzerinde calisiyoruz.</p>
             </div>
         </div>
 
@@ -381,33 +490,41 @@
 </section>
 
 <!-- FOOTER -->
-<footer class="footer" id="iletisim">
-    <div class="footer-links">
-        <a href="privacy.html" id="footer-privacy">Gizlilik Politikasi</a>
-        <a href="mailto:berkuslu@icloud.com" id="footer-contact">Iletisim</a>
+<footer class="footer" id="contact">
+    <div class="footer-inner">
+        <span class="footer-copy">&copy; 2026 xbce.dev &mdash; <span id="footer-rights">Tum haklari saklidir.</span></span>
+        <div class="footer-links">
+            <a href="privacy.html" id="footer-privacy">Gizlilik Politikasi</a>
+            <a href="mailto:berkuslu@icloud.com" id="footer-contact">Iletisim</a>
+        </div>
     </div>
-    <p>&copy; 2026 XBCE Dev. <span id="footer-rights">Tum haklari saklidir.</span></p>
 </footer>
 
 <script>
     let isEN = false;
 
     const translations = {
-        'hero-title': { tr: 'XBCE Dev', en: 'XBCE Dev' },
+        'nav-apps': { tr: 'Uygulamalar', en: 'Apps' },
+        'nav-privacy': { tr: 'Gizlilik', en: 'Privacy' },
+        'nav-contact': { tr: 'Iletisim', en: 'Contact' },
+        'hero-badge-text': { tr: 'Yeni uygulama yayinda', en: 'New app is live' },
+        'hero-title-1': { tr: 'Mobil deneyimi', en: 'Redesigning the' },
+        'hero-title-2': { tr: 'yeniden tasarliyoruz.', en: 'mobile experience.' },
         'hero-desc': {
-            tr: 'Hayati kolaylastiran mobil uygulamalar gelistiriyoruz.',
-            en: 'We build mobile apps that make life easier.'
+            tr: 'Kullanici odakli, performansli ve estetik mobil uygulamalar gelistiriyoruz.',
+            en: 'We build user-focused, performant, and beautifully crafted mobile apps.'
         },
-        'hero-btn': { tr: 'Uygulamalarimizi Kesfedin', en: 'Explore Our Apps' },
-        'apps-title': { tr: 'Uygulamalarimiz', en: 'Our Apps' },
-        'apps-subtitle': { tr: 'Dijital dunyada manevi yolculugunuza eslik ediyoruz', en: 'Accompanying your spiritual journey in the digital world' },
+        'hero-btn': { tr: 'Uygulamalari Kesfet', en: 'Explore Apps' },
+        'apps-label': { tr: 'Uygulamalar', en: 'Apps' },
+        'apps-title': { tr: 'Projelerimiz', en: 'Our Projects' },
+        'apps-subtitle': { tr: 'Gelistirdigimiz ve yayinladigimiz mobil uygulamalar', en: 'Mobile apps we have built and published' },
+        'app1-subtitle': { tr: 'Kuran-i Kerim & Islami Yasam', en: 'Holy Quran & Islamic Life' },
         'app1-desc': {
             tr: '114 sure, Diyanet meali, sesli okuma, ayet tefsiri, namaz vakitleri, kible pusulasi, tesbih, dualar, rozet sistemi ve daha fazlasi. Turkce & Ingilizce destek.',
             en: '114 surahs, Sahih International translation, audio recitation, verse tafsir, prayer times, qibla compass, tasbih, duas, badge system and more. Turkish & English support.'
         },
         'coming-title': { tr: 'Yakinda', en: 'Coming Soon' },
-        'coming-desc': { tr: 'Yeni uygulama geliyor...', en: 'New app coming...' },
-        'coming-text': { tr: 'Yeni projelerimiz uzerinde calisiyoruz. Takipte kalin!', en: 'We are working on new projects. Stay tuned!' },
+        'coming-desc': { tr: 'Yeni projeler uzerinde calisiyoruz.', en: 'Working on new projects.' },
         'footer-privacy': { tr: 'Gizlilik Politikasi', en: 'Privacy Policy' },
         'footer-contact': { tr: 'Iletisim', en: 'Contact' },
         'footer-rights': { tr: 'Tum haklari saklidir.', en: 'All rights reserved.' },
@@ -425,13 +542,11 @@
             if (el) el.textContent = texts[lang];
         }
 
-        // Feature tags
         document.querySelectorAll('.feature-tag').forEach(tag => {
             const text = tag.getAttribute('data-' + lang);
             if (text) tag.textContent = text;
         });
 
-        // Privacy link
         const privLink = document.getElementById('footer-privacy');
         if (privLink) privLink.href = isEN ? 'privacy-en.html' : 'privacy.html';
     }
