@@ -212,21 +212,14 @@
         .screenshots::-webkit-scrollbar { height: 4px; }
         .screenshots::-webkit-scrollbar-track { background: transparent; }
         .screenshots::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 4px; }
-        .screenshot-placeholder {
-            min-width: 130px;
+        .screenshot-img {
             height: 230px;
-            background: linear-gradient(135deg, var(--card), #E8DFD0);
+            width: auto;
             border-radius: 12px;
             border: 1px solid rgba(208, 196, 178, 0.4);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-secondary);
-            font-size: 12px;
-            text-align: center;
-            padding: 8px;
             scroll-snap-align: start;
             flex-shrink: 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
 
         /* === FEATURES === */
@@ -338,13 +331,12 @@
                 </div>
             </div>
             <div class="app-card-body">
-                <!-- Screenshots - replace placeholders with real screenshots -->
                 <div class="screenshots">
-                    <div class="screenshot-placeholder">Ekran Goruntusu 1</div>
-                    <div class="screenshot-placeholder">Ekran Goruntusu 2</div>
-                    <div class="screenshot-placeholder">Ekran Goruntusu 3</div>
-                    <div class="screenshot-placeholder">Ekran Goruntusu 4</div>
-                    <div class="screenshot-placeholder">Ekran Goruntusu 5</div>
+                    <img src="assets/screenshot1.png" alt="Ana Ekran" class="screenshot-img">
+                    <img src="assets/screenshot2.png" alt="Sureler" class="screenshot-img">
+                    <img src="assets/screenshot3.png" alt="Ayet Okuma" class="screenshot-img">
+                    <img src="assets/screenshot4.png" alt="Kible Pusulasi" class="screenshot-img">
+                    <img src="assets/screenshot5.png" alt="Dijital Tesbih" class="screenshot-img">
                 </div>
 
                 <p id="app1-desc">114 sure, Diyanet meali, sesli okuma, ayet tefsiri, namaz vakitleri, kible pusulasi, tesbih, dualar, rozet sistemi ve daha fazlasi. Turkce & Ingilizce destek.</p>
