@@ -153,3 +153,5 @@ google.com, pub-3990748024667386, RESELLER, f08c47fec0942fa0
 loopme.com, 9621, RESELLER, 6c8d5f95897a5a3b
 loopme.com, 11463, RESELLER, 6c8d5f95897a5a3b
 admanmedia.com, 2242, RESELLER
+media.net, 8CU675N41, RESELLER
+video.unrulymedia.com, 703273072, RESELLER
